@@ -18,7 +18,7 @@ export default function Home() {
 
         <div className="w-1/4 flex justify-end">
           <img
-            src="/Jendyco-Logo2.png"
+            src="/jendyco-logo2.png"
             alt="Jendyco Logo"
             className="w-60 h-auto drop-shadow-[0_0_8px_white]"
           />
@@ -46,7 +46,7 @@ export default function Home() {
 
     {/* ✅ Chips */}
  {/* ✅ Highlighted Product Chips with Explore Button */}
-<div className="mt-12 flex flex-col items-center space-y-8">
+<div className="mt- flex flex-col items-center space-y-8">
   <div className="flex flex-wrap justify-center gap-6">
     <a
       href="/products"
@@ -65,7 +65,7 @@ export default function Home() {
       className="bg-white/30 text-white border-2 border-white px-6 py-3 rounded-full text-lg font-semibold backdrop-blur-md shadow-lg hover:bg-white/40 transition"
     >
       Pima Cotton
-    </a>lasting
+    </a>
   </div>
 
   <a
