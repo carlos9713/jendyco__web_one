@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;500&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+}
+@keyframes slide-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes slide-right {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(50%); }
+}
+
+.animate-slide-left {
+  animation: slide-left 25s linear infinite;
+}
+
+.animate-slide-right {
+  animation: slide-right 25s linear infinite;
+}
+
+/* Optional: Hide scrollbars in WebKit browsers */
+::-webkit-scrollbar {
+  display: none;
+}
