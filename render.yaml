@@ -1,0 +1,11 @@
+services:
+  - type: static
+    name: jendyco-frontend
+    env: static
+    buildCommand: npm run build
+    staticPublishPath: build
+    rootDir: frontend
+    headers:
+      - path: /*
+        status: 200
+        file: /index.html
