@@ -1,0 +1,65 @@
+frontend
+├── build
+│   ├── _redirects
+│   ├── asset-manifest.json
+│   ├── background_main1.png
+│   ├── background_main2.png
+│   ├── index.html
+│   ├── Jendyco-GlobalTrade-Logo1.png
+│   ├── jendyco-logo.png
+│   ├── jendyco-logo2.png
+│   ├── JendycoCacao-Branch.JPG
+│   ├── JendycoCacao-Branch2.JPG
+│   ├── JendycoCacao-Branch3.JPG
+│   ├── JendycoCoffee-Branch3.JPG
+│   ├── Jendycocoffeebeans-closeup.JPG
+│   ├── Jendycoffee-branch.JPG
+│   ├── Jendycoffee-Branch2.JPG
+│   ├── JendycoFields1.jpg
+│   └── static
+│       ├── css
+│       │   ├── main.03729572.css
+│       │   └── main.03729572.css.map
+│       └── js
+│           ├── main.cd0a261b.js
+│           ├── main.cd0a261b.js.LICENSE.txt
+│           └── main.cd0a261b.js.map
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── public
+│   ├── _redirects
+│   ├── background_main1.png
+│   ├── background_main2.png
+│   ├── index.html
+│   ├── Jendyco-GlobalTrade-Logo1.png
+│   ├── jendyco-logo.png
+│   ├── jendyco-logo2.png
+│   ├── JendycoCacao-Branch.JPG
+│   ├── JendycoCacao-Branch2.JPG
+│   ├── JendycoCacao-Branch3.JPG
+│   ├── JendycoCoffee-Branch3.JPG
+│   ├── Jendycocoffeebeans-closeup.JPG
+│   ├── Jendycoffee-branch.JPG
+│   ├── Jendycoffee-Branch2.JPG
+│   └── JendycoFields1.jpg
+├── README.md
+├── src
+│   ├── App.js
+│   ├── App.test.js
+│   ├── components
+│   │   ├── Footer.js
+│   │   └── NavBar.js
+│   ├── index.css
+│   ├── index.js
+│   ├── logo.svg
+│   ├── pages
+│   │   ├── About.js
+│   │   ├── Home.js
+│   │   ├── Products.js
+│   │   └── Quote.js
+│   ├── reportWebVitals.js
+│   └── setupTests.js
+└── tailwind.config.js
+
+9 directories, 54 files

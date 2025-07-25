@@ -11,7 +11,7 @@ def handle_quote_submission(request):
             data = json.loads(request.body)
 
             # ✅ Validate required fields
-            required_fields = ["name", "email", "product"]
+            required_fields = ["name", "email"]
             missing = [field for field in required_fields if not data.get(field)]
             if missing:
                 return JsonResponse({
@@ -41,10 +41,11 @@ def handle_quote_submission(request):
             send_mail(
                 subject="📩 New Quote Request - Jendyco",
                 message=message_body,
-                from_email=settings.DEFAULT_FROM_EMAIL,
+                from_email="Jendyco <info@jendy.co>",
                 recipient_list=[settings.ADMIN_EMAIL],
                 fail_silently=False,
             )
+
 
             return JsonResponse({"success": True})
         except Exception as e:

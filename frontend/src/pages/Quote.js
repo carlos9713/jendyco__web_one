@@ -6,12 +6,24 @@ export default function Quote() {
     name: "",
     email: "",
     company: "",
-    product: "Arabica Coffee Beans",
+    products: [],
     details: "",
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value, type, checked } = e.target;
+    if (name === "products") {
+      const updatedProducts = [...formData.products];
+      if (checked) {
+        updatedProducts.push(value);
+      } else {
+        const index = updatedProducts.indexOf(value);
+        if (index > -1) updatedProducts.splice(index, 1);
+      }
+      setFormData({ ...formData, products: updatedProducts });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -30,7 +42,7 @@ export default function Quote() {
           name: "",
           email: "",
           company: "",
-          product: "Arabica Coffee Beans",
+          products: [],
           details: "",
         });
       } else {
@@ -41,9 +53,22 @@ export default function Quote() {
     }
   };
 
+  const productOptions = [
+    "Arabica Coffee Beans",
+    "Cacao Beans",
+    "Pima Cotton",
+    "Camu Camu Powder",
+    "Lucuma Powder",
+    "Baby Alpaca Wool - Royal",
+    "Baby Alpaca Wool - Baby",
+    "Baby Alpaca Wool - Regular",
+    "Vicuña Wool",
+    "Mixed Shipment",
+    "Other / Custom",
+  ];
+
   return (
     <div className="min-h-screen bg-gray-100 text-gray-900">
-      {/* 🔹 Top Nav Bar */}
       <div className="w-full bg-gray-900 text-white flex items-center justify-between px-40 py-4 fixed top-0 z-50 shadow-md">
         <div className="text-sm font-bold uppercase">
           <a href="/" className="hover:underline text-orange-400">Home</a>
@@ -55,21 +80,26 @@ export default function Quote() {
         </div>
         <div className="w-1/4 flex justify-end">
           <img
-            src="/Jendyco-Logo2.png"
+            src="/images/jendyco-logo2.png"
             alt="Jendyco Logo"
             className="w-40 h-auto drop-shadow-[0_0_8px_white]"
           />
         </div>
       </div>
 
-      {/* 🔸 Main Quote Form Section */}
       <div className="pt-52 px-6 md:px-40 py-16 bg-white">
+        <div className="flex justify-center mb-10">
+          <img
+            src="/images/jendyco-logo2.png"
+            alt="Jendyco Logo Feature"
+            className="w-32 h-auto drop-shadow-[0_0_8px_#002b5c]"
+          />
+        </div>
         <h1 className="text-4xl font-bold text-center text-[#002b5c] mb-10">Request a Quote</h1>
         <p className="text-center text-gray-700 max-w-xl mx-auto mb-12">
-          Share your needs for coffee, cacao, or cargo services. We’ll get back to you within 24–48 hours with a customized quote.
+          Share your needs for coffee, cacao, alpaca, or Peruvian exports. We’ll get back to you within 24–48 hours with a customized quote.
         </p>
 
-        {/* 🔽 Form */}
         <form
           onSubmit={handleSubmit}
           className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-800"
@@ -110,19 +140,22 @@ export default function Quote() {
           </div>
 
           <div className="flex flex-col md:col-span-2">
-            <label className="mb-1 font-medium">Product of Interest</label>
-            <select
-              name="product"
-              value={formData.product}
-              onChange={handleChange}
-              className="p-3 rounded border border-gray-300"
-            >
-              <option>Arabica Coffee Beans</option>
-              <option>Cacao Beans</option>
-              <option>Pima Cotton</option>
-              <option>Mixed Shipment</option>
-              <option>Other / Custom</option>
-            </select>
+            <label className="mb-1 font-medium">Products of Interest</label>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 bg-white p-3 border border-gray-300 rounded max-h-64 overflow-y-auto">
+              {productOptions.map((product) => (
+                <label key={product} className="flex items-center space-x-2 text-sm">
+                  <input
+                    type="checkbox"
+                    name="products"
+                    value={product}
+                    checked={formData.products.includes(product)}
+                    onChange={handleChange}
+                    className="accent-orange-500"
+                  />
+                  <span>{product}</span>
+                </label>
+              ))}
+            </div>
           </div>
 
           <div className="flex flex-col md:col-span-2">
@@ -148,7 +181,6 @@ export default function Quote() {
         </form>
       </div>
 
-      {/* 🔻 Footer with Social */}
       <footer className="bg-gray-200 text-center py-8 text-sm text-gray-600">
         <div className="mb-4 flex justify-center gap-6">
           <a
