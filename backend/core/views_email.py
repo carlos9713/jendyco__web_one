@@ -10,7 +10,7 @@ def handle_quote_submission(request):
         try:
             data = json.loads(request.body)
 
-            # ✅ Validate required fields
+            # Validate required fields
             required_fields = ["name", "email"]
             missing = [field for field in required_fields if not data.get(field)]
             if missing:
@@ -19,25 +19,29 @@ def handle_quote_submission(request):
                     "error": f"Missing required field(s): {', '.join(missing)}"
                 }, status=400)
 
-            # ✅ Extract form data
+            # Extract form data
             name = data.get("name")
             email = data.get("email")
             company = data.get("company")
-            product = data.get("product")
+            products = data.get("products", [])
             details = data.get("details")
 
-            # ✅ Construct message
+            # Format products nicely
+            products_list = "\n".join(f"- {p}" for p in products) if products else "None selected"
+
+            # Construct message
             message_body = f"""
-            New Quote Request from Jendyco Site:
+New Quote Request from Jendyco Site:
 
-            Name: {name}
-            Email: {email}
-            Company: {company}
-            Product of Interest: {product}
-            Details: {details}
-            """
+Name: {name}
+Email: {email}
+Company: {company}
+Products of Interest:
+{products_list}
+Details: {details}
+"""
 
-            # ✅ Send the email
+            # Send the email
             send_mail(
                 subject="📩 New Quote Request - Jendyco",
                 message=message_body,
@@ -45,7 +49,6 @@ def handle_quote_submission(request):
                 recipient_list=[settings.ADMIN_EMAIL],
                 fail_silently=False,
             )
-
 
             return JsonResponse({"success": True})
         except Exception as e:
