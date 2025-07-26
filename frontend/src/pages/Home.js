@@ -45,7 +45,7 @@ export default function Home() {
   });
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value, checked } = e.target;
     if (name === "products") {
       const updatedProducts = [...formData.products];
       if (checked) updatedProducts.push(value);
